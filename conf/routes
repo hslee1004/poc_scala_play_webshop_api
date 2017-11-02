@@ -1,0 +1,39 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+# test delay and async
+GET     /api/delay/:id              controllers.DelayTestController.index(id:Int)
+GET     /api/test/json              controllers.DelayTestController.getJson
+GET     /api/test/future            controllers.DelayTestController.TestFuture
+GET     /api/test/promise           controllers.DelayTestController.TestPromise
+
+# test invoice
+GET     /api/invoice/:id            controllers.InvoiceController.GetInvoice(id)
+GET     /api/invoice/test/json      controllers.InvoiceController.TestInvoiceJson(ticket="")
+GET     /api/invoice/create/sample  controllers.InvoiceController.TestCreateSampleInvoice
+GET     /api/invoice/test/future    controllers.InvoiceController.TestFutureJson
+
+# test NxAPI
+GET     /api/nxapi/token            controllers.NxAPITestController.GetToken(tikcet="")
+
+# test cashbroker
+GET     /api/wallet/balance         controllers.NxCashbrokerController.GetBalance(userId)
+GET     /api/wallet/xml             controllers.NxCashbrokerController.TestXML
+GET     /api/wallet/payment         controllers.NxCashbrokerController.TestRequestPayment
+
+# invoice
+POST    /api/invoice                controllers.InvoiceController.CreateInvoice()
+
+# simulate game server
+GET     /shop/cart                  controllers.TestGameServerController.TestRegisterInvoice(ticket:String ?="")

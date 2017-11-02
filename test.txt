@@ -1,0 +1,8 @@
+ab -v low  -n 1000000 -c 100 http://jupiter-test.nexon.net/api/test
+ab -v low  -n 1000000 -c 100 http://jupiter-test.nexon.net/api/test
+
+siege -c10 http://jupiter-test.nexon.net/api/test
+siege -c10 http://jupiter-test.nexon.net/api/test1
+
+curl --request GET --include http://jupiter-test.nexon.net/api/test
+
